@@ -7,10 +7,27 @@
 //
 
 import SwiftUI
+extension ContentView{
+    enum Tab:Hashable{
+        case home
+        case more
+    }
+}
 
 struct ContentView: View {
+    
+    @State private var selectedTab: Tab = .home
+    
     var body: some View {
-        Text("Hello World")
+        TabView(selection: $selectedTab) {
+            Text("Home Screen")
+                .tabItem { Text("Home")}
+                .tag(Tab.home)
+            
+            Text("More Screen")
+            .tabItem{Text("More")}
+                .tag(Tab.more)
+        }
     }
 }
 
